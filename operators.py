@@ -3,6 +3,19 @@ import numpy as np
 np.set_printoptions(threshold=np.inf, linewidth=np.inf)
 
 _NUM_QUBITS = 3
+def set_num_qubits(num: int):
+    """set_num_qubits(num: int) -> None:
+        num: number of qubits to set for the global operators
+        returns: None, but sets the global variables for the operators based on the number 
+            of qubits
+    """
+    global _NUM_QUBITS, op_x, op_h, op_i, op_mcz
+    _NUM_QUBITS = num
+    op_x = tensor_series([OP_X] * _NUM_QUBITS)
+    op_h = tensor_series([OP_H] * _NUM_QUBITS)
+    op_i = tensor_series([OP_I] * _NUM_QUBITS)
+    op_mcz = tensor_series([OP_I] * _NUM_QUBITS)
+    op_mcz.matrix[-1, -1] = -1
 
 class operator:
     """operator object
@@ -76,11 +89,7 @@ OP_Z = operator(1, np.array([[1, 0], [0, -1]]))
 OP_H = operator(1/np.sqrt(2), np.array([[1, 1], [1, -1]]))
 OP_I = operator(1, np.array([[1, 0], [0, 1]]))
 
-op_x = tensor_series([OP_X] * _NUM_QUBITS)
-op_h = tensor_series([OP_H] * _NUM_QUBITS)
-op_i = tensor_series([OP_I] * _NUM_QUBITS)
-op_mcz = tensor_series([OP_I] * _NUM_QUBITS)
-op_mcz.matrix[-1, -1] = -1
+set_num_qubits(3)
 
 def show_help():
     print(f"{'='*30}\n=== Single Qubit Operators")
@@ -92,6 +101,7 @@ def show_help():
     print(f"{'='*30}\n=== Functions")
     print(tensor_series.__doc__)
     print(operator_series.__doc__)
+    print(set_num_qubits.__doc__)
 
     print(f"{'='*30}\n=== operator")
     print(operator.__doc__)
