@@ -8,3 +8,5 @@ source venv/bin/activate         # run venv
 pip3 install -r requirements.txt # install packages
 python3 -i operators.py          # run system
 ```
+
+If you don't want something to be added to the repo, like say you algorithm, just name it `alg_*.py`.
