@@ -106,4 +106,5 @@ def show_help():
     print(f"{'='*30}\n=== operator")
     print(operator.__doc__)
 
-show_help()
+if __name__ == "__main__":
+    show_help()
