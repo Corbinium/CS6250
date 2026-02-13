@@ -50,7 +50,7 @@ class operator:
     def from_int(cls, value: int) -> tuple['operator', 'operator']:
         state = f"{value:0{_NUM_QUBITS}b}"
         q_list = [Q_0 if bit == '0' else Q_1 for bit in state]
-        op_q = tensor_series([operator(1, q) for q in q_list])
+        op_q = tensor_series(q_list)
         a_list = [OP_X if bit == '0' else OP_I for bit in state]
         op_a = tensor_series(a_list)
         return op_q, op_a
