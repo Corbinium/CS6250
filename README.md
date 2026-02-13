@@ -1,6 +1,6 @@
 # CS6250
 
-Run all the code below and you'll be good to go.
+Run all the code below and you'll be good to go. Once you've ran through all of this it will put you in a python console. You can view an operator's matrix by just typing its name in the console.
 
 ```bash
 python3 -m venv venv             # create virtual environment
